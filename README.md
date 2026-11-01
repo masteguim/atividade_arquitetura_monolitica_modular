@@ -77,3 +77,4 @@ CORS permite `http://localhost:5173` e `http://127.0.0.1:5173`. No React use `VI
 
 Não possui autenticação, pagamentos reais, multiusuário administrativo nem APIs independentes. Valores monetários são armazenados como REAL por simplicidade acadêmica; em produção recomenda-se centavos inteiros ou NUMERIC/Decimal. Para o exercício 8.4, preparar o deploy deste monólito em servidor.
 # atividade_arquitetura_monolitica_modular
+# atividade_arquitetura_monolitica_modular
