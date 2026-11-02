@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block conteudo %}<h2>Favoritos</h2>
+{% if livros %}{% for livro in livros %}<div class="painel linha entre"><span>{{ livro.titulo }} — {{ livro.autor }}</span><form method="post" action="{{ url_for('favoritos.alternar', id_livro=livro.id) }}"><button class="secundario">Remover favorito</button></form></div>{% endfor %}
+{% else %}<p>Você ainda não tem favoritos.</p>{% endif %}{% endblock %}

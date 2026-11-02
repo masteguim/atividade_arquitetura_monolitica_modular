@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block conteudo %}<h2>Reservas para retirada</h2>
+<section class="painel"><h3>Nova reserva</h3><form method="post" action="{{ url_for('reservas.criar') }}" class="linha"><input name="nome" placeholder="Seu nome" required><select name="livro_id" required><option value="">Selecione o livro</option>{% for livro in livros %}<option value="{{ livro.id }}">{{ livro.titulo }}</option>{% endfor %}</select><button>Reservar</button></form></section>
+{% if reservas %}{% for reserva in reservas %}<div class="painel linha entre"><span>{{ reserva.nome }} — {{ reserva.livro.titulo if reserva.livro else 'Livro excluído' }} ({{ reserva.status }})</span><form method="post" action="{{ url_for('reservas.cancelar', id_reserva=reserva.id) }}"><button class="perigo">Cancelar reserva</button></form></div>{% endfor %}
+{% else %}<p>Nenhuma reserva cadastrada.</p>{% endif %}{% endblock %}

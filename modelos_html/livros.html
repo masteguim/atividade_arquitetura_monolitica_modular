@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% block conteudo %}
+<h2>Livros</h2>
+<form method="get" class="linha"><input name="busca" placeholder="Buscar por título ou autor" value="{{ request.args.get('busca', '') }}"><button>Buscar</button></form>
+<section class="painel"><h3>Cadastrar livro</h3><form method="post" action="{{ url_for('livros.cadastrar') }}" class="linha"><input name="titulo" placeholder="Título" required><input name="autor" placeholder="Autor" required><button>Cadastrar</button></form></section>
+{% if livros %}
+<div class="grade">{% for livro in livros %}<article class="painel"><h3>{{ livro.titulo }}</h3><p>Autor: {{ livro.autor }}</p><div class="acoes">
+<form method="post" action="{{ url_for('carrinho.adicionar', id_livro=livro.id) }}"><button>Adicionar ao carrinho</button></form>
+<form method="post" action="{{ url_for('favoritos.alternar', id_livro=livro.id) }}"><button class="secundario">Favoritar / desfavoritar</button></form>
+<form method="post" action="{{ url_for('livros.excluir', id_livro=livro.id) }}" onsubmit="return confirm('Excluir este livro?')"><button class="perigo">Excluir</button></form>
+</div></article>{% endfor %}</div>
+{% else %}<p>Nenhum livro encontrado. Cadastre o primeiro livro.</p>{% endif %}
+{% endblock %}
